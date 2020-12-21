@@ -730,3 +730,14 @@
 
 (defun say-hi ()
 	(good-announce-macro))
+	
+(defmacro while (test &body body)
+	`(do ()
+		 ((not ,test))
+		,@body))
+
+(defun next-power-of-two (n &aux (i 1))
+	(while (< i n)
+		(format t "~%Not ~A" i)
+		(setf i (* i 2)))
+	i)
